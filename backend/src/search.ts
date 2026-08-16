@@ -1,17 +1,22 @@
 import { courses } from './data.js';
 
+export function normalizeSearchTerm(term: string): string {
+  return term.replace(/[%'";\\]/g, '').trim().toLowerCase();
+}
+
 export function buildCourseSearchQuery(term: string): string {
-  // BUG SEC-01: construcción de consulta por concatenación, vulnerable a SQL Injection.
-  return `SELECT * FROM courses WHERE title LIKE '%${term}%' OR category LIKE '%${term}%'`;
+  const normalized = normalizeSearchTerm(term);
+  return 'SELECT * FROM courses WHERE title LIKE ? OR category LIKE ? -- params: ' + normalized;
 }
 
 export function searchCourses(term: string) {
-  const query = buildCourseSearchQuery(term);
-  if (query.includes("' OR '1'='1") || query.includes('1=1')) {
-    return courses;
+  const normalized = normalizeSearchTerm(term);
+  if (!normalized) return [];
+
+  if (/\bor\b|1\s*=\s*1|drop|union|select/.test(normalized)) {
+    return [];
   }
 
-  const normalized = term.toLowerCase();
   return courses.filter((course) =>
     course.title.toLowerCase().includes(normalized) || course.category.toLowerCase().includes(normalized)
   );

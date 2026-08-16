@@ -1,12 +1,20 @@
 import { reviews, type Review } from './data.js';
 
+export function escapeHtml(value: string): string {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
 export function addReview(courseId: number, userId: number, comment: string): Review {
-  // BUG SEC-02: se guarda el comentario sin sanitizar, permitiendo XSS persistente.
   const review: Review = {
     id: reviews.length + 1,
     courseId,
     userId,
-    comment,
+    comment: escapeHtml(comment),
     createdAt: new Date().toISOString()
   };
   reviews.push(review);
