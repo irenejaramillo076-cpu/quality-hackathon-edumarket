@@ -1,0 +1,21 @@
+ID,Categoria,ISO25010,Severidad,Impacto,Corregido
+FUN-01,Funcional,Adecuación funcional - exactitud,Alta,Promoción incorrecta y reclamos,Sí
+FUN-02,Funcional,Fiabilidad - recuperabilidad,Alta,Abandono de compra,Sí
+FUN-03,Funcional,Seguridad funcional,Media,Pérdida de administración,No
+SEC-01,Seguridad,Seguridad - integridad,Crítica,SQL Injection,Sí
+SEC-02,Seguridad,Seguridad - confidencialidad/integridad,Crítica,XSS persistente,Sí
+SEC-03,Seguridad,Seguridad - autenticidad,Alta,Sesiones indefinidas,Sí
+PERF-01,Performance,Eficiencia de desempeño,Media,Carga lenta,No
+PERF-02,Performance,Eficiencia de desempeño,Media,Lentitud API,No
+PERF-03,Performance,Eficiencia de desempeño,Media,Bundle grande,No
+PERF-04,Performance,Eficiencia de desempeño,Media,Sin lazy loading,No
+ACC-01,Accesibilidad,Usabilidad - accesibilidad,Media,Contraste bajo,No
+ACC-02,Accesibilidad,Usabilidad - accesibilidad,Media,Imágenes sin alt,No
+ACC-03,Accesibilidad,Usabilidad - operabilidad,Media,No usable con teclado,No
+ACC-04,Accesibilidad,Usabilidad - accesibilidad,Media,Input sin label,No
+ACC-05,Accesibilidad,Usabilidad - accesibilidad,Baja,Falta ARIA,No
+UX-01,UX,Usabilidad - aprendizaje,Media,Fricción checkout,No
+UX-02,UX,Usabilidad - protección ante errores,Media,Mensajes ambiguos,No
+UX-03,UX,Usabilidad - satisfacción,Media,Confirmación débil,No
+DQA-01,Design QA,Usabilidad - estética,Baja,Espaciado inconsistente,No
+DQA-02,Design QA,Usabilidad - estética,Baja,Tipografía inconsistente,No

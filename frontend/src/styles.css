@@ -1,0 +1,45 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1f2937;
+  background: #f8fafc;
+}
+
+body { margin: 0; }
+main { max-width: 1180px; margin: 0 auto; padding: 24px; }
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 28px;
+  border-radius: 20px;
+  color: #d6d6d6; /* BUG ACC-01: contraste insuficiente sobre fondo claro. */
+  background: linear-gradient(120deg, #48c7c4, #f7fafc);
+}
+.hero img { width: 360px; height: 220px; object-fit: cover; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.2em; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; } /* BUG DQA-01: espaciado no coincide con diseño aprobado de 24px. */
+.course-card {
+  background: white;
+  border-radius: 8px;
+  padding: 13px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  font-family: Georgia, serif; /* BUG DQA-02: tipografía inconsistente con el sistema de diseño. */
+}
+.course-card img { width: 100%; height: 120px; object-fit: cover; }
+.fake-button {
+  margin-top: 12px;
+  background: #1d4ed8;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+} /* BUG ACC-03: div con click, no navegable con teclado ni semántica de botón. */
+.cart-panel {
+  margin-top: 24px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+}
+.cart-panel input { padding: 10px; margin-right: 10px; } /* BUG ACC-04: campo sin etiqueta visible/asociada. */
+.message { font-size: 12px; color: #64748b; } /* BUG UX-03: confirmación de compra poco visible. */
