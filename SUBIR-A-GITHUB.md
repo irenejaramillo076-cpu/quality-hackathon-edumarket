@@ -1,29 +1,22 @@
-# Cómo subir este proyecto a GitHub
+# Quality Hackathon EduMarket en GitHub
 
-Como la herramienta conectada no permite crear repositorios nuevos desde cero, primero crea un repositorio vacío en GitHub con este nombre sugerido:
+Repositorio publicado en:
 
-`quality-hackathon-edumarket`
+`https://github.com/irenejaramillo076-cpu/quality-hackathon-edumarket`
 
-No marques README, .gitignore ni licencia, porque este proyecto ya los incluye.
+## Ramas
 
-## Subir ramas desde PowerShell
+- `main`: versión inicial del sistema con los defectos intencionales para la fase de exploración.
+- `war-room-fixes`: versión con cinco correcciones prioritarias y sus pruebas automatizadas.
+
+## Clonar el repositorio
 
 ```powershell
-cd ruta\donde\extrajiste\quality-hackathon-edumarket
-git remote add origin https://github.com/irenejaramillo076-cpu/quality-hackathon-edumarket.git
-git push -u origin main
-git push -u origin war-room-fixes
+git clone https://github.com/irenejaramillo076-cpu/quality-hackathon-edumarket.git
+cd quality-hackathon-edumarket
 ```
 
-## Crear Pull Request
-
-Después de subir las ramas, abre un Pull Request:
-
-- Base: `main`
-- Compare: `war-room-fixes`
-- Título: `fix: estabilizar defectos críticos del Quality Hackathon`
-
-## Comandos para defensa
+## Comandos para la defensa
 
 ```bash
 git checkout main
@@ -32,7 +25,16 @@ npm test
 
 git checkout war-room-fixes
 npm test
+
 git diff main..war-room-fixes
 ```
 
-En `main` la versión representa el sistema defectuoso inicial. En `war-room-fixes` están las cinco correcciones priorizadas con pruebas automatizadas.
+## Pull Request
+
+Para evidenciar el proceso del War Room, el Pull Request debe comparar:
+
+- Base: `main`
+- Compare: `war-room-fixes`
+- Título sugerido: `fix: estabilizar defectos críticos del Quality Hackathon`
+
+La rama `main` conserva el escenario inicial; la rama `war-room-fixes` permite demostrar la corrección y las pruebas asociadas a los riesgos priorizados.
