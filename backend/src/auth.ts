@@ -8,8 +8,11 @@ export function findUserByCredentials(email: string, password: string): User | u
 }
 
 export function createToken(user: User): string {
-  // BUG SEC-03: el token no tiene expiración, lo que aumenta el riesgo de reutilización indefinida.
-  return jwt.sign({ sub: user.id, role: user.role, email: user.email }, secret);
+  return jwt.sign(
+    { sub: user.id, role: user.role, email: user.email },
+    secret,
+    { expiresIn: '1h' }
+  );
 }
 
 export function verifyToken(token: string): jwt.JwtPayload | string {

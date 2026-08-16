@@ -6,8 +6,7 @@ export function calculateSubtotal(items: CartItem[]): number {
 
 export function calculateDiscount(subtotal: number, coupon: string): number {
   if (coupon.trim().toUpperCase() === 'MEDUCA20') {
-    // BUG FUN-01: el descuento prometido es 20 %, pero se calcula solo 10 %.
-    return subtotal * 0.10;
+    return subtotal * 0.20;
   }
 
   return 0;
