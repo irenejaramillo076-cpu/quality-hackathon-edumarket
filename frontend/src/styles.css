@@ -1,45 +1,44 @@
-:root {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #1f2937;
-  background: #f8fafc;
-}
-
+:root { font-family: Arial, Helvetica, sans-serif; color: #1f2937; background: #f1f5f9; }
+* { box-sizing: border-box; }
 body { margin: 0; }
-main { max-width: 1180px; margin: 0 auto; padding: 24px; }
-.hero {
-  display: flex;
-  justify-content: space-between;
-  gap: 28px;
-  padding: 28px;
-  border-radius: 20px;
-  color: #d6d6d6; /* BUG ACC-01: contraste insuficiente sobre fondo claro. */
-  background: linear-gradient(120deg, #48c7c4, #f7fafc);
-}
-.hero img { width: 360px; height: 220px; object-fit: cover; }
-.eyebrow { text-transform: uppercase; letter-spacing: 0.2em; }
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; } /* BUG DQA-01: espaciado no coincide con diseño aprobado de 24px. */
-.course-card {
-  background: white;
-  border-radius: 8px;
-  padding: 13px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.08);
-  font-family: Georgia, serif; /* BUG DQA-02: tipografía inconsistente con el sistema de diseño. */
-}
-.course-card img { width: 100%; height: 120px; object-fit: cover; }
-.fake-button {
-  margin-top: 12px;
-  background: #1d4ed8;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  text-align: center;
-} /* BUG ACC-03: div con click, no navegable con teclado ni semántica de botón. */
-.cart-panel {
-  margin-top: 24px;
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-}
-.cart-panel input { padding: 10px; margin-right: 10px; } /* BUG ACC-04: campo sin etiqueta visible/asociada. */
-.message { font-size: 12px; color: #64748b; } /* BUG UX-03: confirmación de compra poco visible. */
+button, input { font: inherit; }
+button { cursor: pointer; }
+main { max-width: 1180px; margin: 0 auto; padding: 18px 24px 48px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 10px 0 18px; }
+.topbar nav { display: flex; flex-wrap: wrap; gap: 8px; }
+.topbar nav button, .link-button { border: 0; background: #e2e8f0; padding: 8px 11px; border-radius: 9px; }
+.hero { display: flex; justify-content: space-between; gap: 28px; padding: 28px; border-radius: 20px; color: #d6d6d6; background: linear-gradient(120deg, #48c7c4, #f7fafc); overflow: hidden; } /* BUG ACC-01: contraste insuficiente. */
+.hero > div { max-width: 54%; }
+.hero h1 { font-size: 42px; margin: 8px 0; }
+.hero img { width: 430px; height: 225px; object-fit: cover; border-radius: 16px; } /* BUG PERF-01: asset hero se carga de forma eager y sobredimensionada. */
+.eyebrow { text-transform: uppercase; letter-spacing: .2em; }
+.auth-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 18px 0; }
+.compact-form, .session-box { background: white; padding: 14px; border-radius: 14px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.compact-form h3 { width: 100%; margin: 0 0 5px; }
+.compact-form input, .search-form input, .reviews-box input, .checkout input, .cart-panel input { padding: 9px 10px; border: 1px solid #cbd5e1; border-radius: 8px; }
+.compact-form button, .search-form button, .reviews-box button, .checkout button, .cart-panel button, .admin-row button { border: 0; border-radius: 8px; padding: 9px 12px; background: #0f766e; color: white; }
+.session-box { justify-content: space-between; grid-column: 1 / -1; }
+.message { font-size: 12px; color: #64748b; background: white; border-radius: 8px; padding: 7px 10px; } /* BUG UX-03: confirmación poco visible. */
+.catalog, .panel { margin-top: 22px; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; } /* BUG DQA-01: diseño aprobado usa 24px. */
+.course-card { background: white; border-radius: 8px; padding: 13px; box-shadow: 0 8px 24px rgba(0,0,0,.08); font-family: Georgia, serif; } /* BUG DQA-02: tipografía inconsistente. */
+.course-card img { width: 100%; height: 125px; object-fit: cover; border-radius: 8px; } /* BUG ACC-02: las imágenes no tienen texto alternativo en el JSX. */
+.fake-button { margin-top: 12px; background: #1d4ed8; color: white; padding: 10px; border-radius: 10px; cursor: pointer; text-align: center; } /* BUG ACC-03: div con click no navegable por teclado. */
+.link-button { width: 100%; margin-top: 7px; }
+.reviews-box, .panel, .cart-panel { background: white; border-radius: 16px; padding: 20px; margin-top: 20px; }
+.review { padding: 10px; border-bottom: 1px solid #e2e8f0; }
+.reviews-box form, .search-form { display: flex; gap: 8px; margin-top: 12px; }
+.reviews-box input, .search-form input { flex: 1; }
+.search-results article, .admin-row { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid #e2e8f0; }
+.checkout { min-height: 330px; }
+.checkout .step { color: #64748b; }
+.checkout input { margin: 5px 6px 5px 0; }
+.checkout-actions { display: flex; justify-content: space-between; margin-top: 28px; }
+.checkout-actions button:disabled { opacity: .45; cursor: not-allowed; }
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.metrics article { background: #f8fafc; border-radius: 12px; padding: 20px; display: grid; gap: 6px; }
+.metrics strong { font-size: 26px; color: #0f766e; }
+.cart-panel input { margin-right: 10px; } /* BUG ACC-04: input de cupón sin label asociado. */
+.cart-panel { position: sticky; bottom: 10px; box-shadow: 0 10px 35px rgba(15,23,42,.14); } /* BUG ACC-05: aside no tiene nombre accesible/ARIA. */
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } .hero img { width: 45%; } .auth-strip, .metrics { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { main { padding: 12px; } .topbar, .hero { flex-direction: column; } .hero > div, .hero img { max-width: 100%; width: 100%; } .grid, .auth-strip, .metrics { grid-template-columns: 1fr; } }
